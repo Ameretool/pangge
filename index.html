@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <title>pang.ge · Creative Hub</title>
-    <meta name="description" content="pang.ge — A digital playground for ideas, sharing, and connections.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>胖哥 · pang.ge</title>
     <style>
         * {
             margin: 0;
@@ -14,476 +11,322 @@
             box-sizing: border-box;
         }
 
-        /* 亮色模式变量 (默认) */
         :root {
-            --bg-gradient-start: #f0f4fa;
-            --bg-gradient-end: #e2e8f0;
-            --card-bg: rgba(255, 255, 255, 0.7);
-            --text-primary: #1e293b;
-            --text-secondary: #334155;
-            --text-muted: #475569;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --border-light: rgba(0, 0, 0, 0.1);
-            --glow-color-1: rgba(37, 99, 235, 0.2);
-            --glow-color-2: rgba(124, 58, 237, 0.15);
-            --social-bg: rgba(0, 0, 0, 0.05);
-            --social-hover: #2563eb;
-            --badge-bg: rgba(37, 99, 235, 0.15);
-        }
-
-        /* 暗黑模式变量 */
-        body.dark {
-            --bg-gradient-start: #0a0f1e;
-            --bg-gradient-end: #03050c;
-            --card-bg: rgba(18, 25, 45, 0.75);
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-            --accent: #3b82f6;
-            --accent-hover: #60a5fa;
-            --border-light: rgba(255, 255, 255, 0.15);
-            --glow-color-1: rgba(59, 130, 246, 0.25);
-            --glow-color-2: rgba(139, 92, 246, 0.2);
-            --social-bg: rgba(255, 255, 255, 0.08);
-            --social-hover: #3b82f6;
-            --badge-bg: rgba(59, 130, 246, 0.25);
+            --bg-gradient-start: #FFF9F0;
+            --bg-gradient-end: #FFE9D6;
+            --card-bg: rgba(255, 249, 240, 0.75);
+            --text-primary: #4A3B2C;
+            --text-secondary: #8B7355;
+            --accent-color: #E67E22;
+            --accent-light: #F5B041;
+            --border-light: rgba(230, 126, 34, 0.15);
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: radial-gradient(ellipse at 30% 40%, var(--bg-gradient-start), var(--bg-gradient-end));
             min-height: 100vh;
-            color: var(--text-primary);
-            transition: background 0.2s, color 0.2s;
-            overflow-x: hidden;
-        }
-
-        /* 动态背景 (无网格线/小方块) */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .glow-1 {
-            position: absolute;
-            top: -30%;
-            left: -20%;
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle, var(--glow-color-1), transparent 70%);
-            filter: blur(70px);
-            animation: floatRotate 24s infinite alternate;
-        }
-        .glow-2 {
-            position: absolute;
-            bottom: -20%;
-            right: -15%;
-            width: 70%;
-            height: 70%;
-            background: radial-gradient(circle, var(--glow-color-2), transparent 80%);
-            filter: blur(80px);
-            animation: floatRotate2 28s infinite alternate-reverse;
-        }
-        @keyframes floatRotate {
-            0% { transform: translate(0,0) scale(1); opacity: 0.6; }
-            100% { transform: translate(50px, 40px) scale(1.2); opacity: 0.9; }
-        }
-        @keyframes floatRotate2 {
-            0% { transform: translate(0,0) scale(1); opacity: 0.4; }
-            100% { transform: translate(-60px, -30px) scale(1.3); opacity: 0.8; }
-        }
-
-        /* 主内容 */
-        .wrapper {
-            position: relative;
-            z-index: 2;
-            min-height: 100vh;
+            background: linear-gradient(145deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans', system-ui, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem 1.5rem;
-        }
-        .glass-card {
-            max-width: 780px;
-            width: 100%;
-            background: var(--card-bg);
-            backdrop-filter: blur(14px);
-            border-radius: 2.5rem;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            border: 1px solid var(--border-light);
-            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-        .glass-card:hover {
-            transform: scale(1.01);
-            border-color: var(--accent);
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+            color: var(--text-primary);
         }
 
-        .controls {
-            display: flex;
-            justify-content: flex-end;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(70px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.6;
         }
-        .ctrl-btn {
-            background: var(--social-bg);
+        .orb-1 {
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, rgba(245, 176, 65, 0.4), rgba(230, 126, 34, 0.1));
+            top: -15%;
+            left: -10%;
+            animation: floatOrb 22s infinite alternate ease-in-out;
+        }
+        .orb-2 {
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(255, 183, 77, 0.35), rgba(255, 158, 57, 0.08));
+            bottom: -20%;
+            right: -15%;
+            animation: floatOrb 26s infinite alternate-reverse ease-in-out;
+        }
+        .orb-3 {
+            width: 30vw;
+            height: 30vw;
+            background: radial-gradient(circle, rgba(255, 221, 164, 0.35), rgba(245, 176, 65, 0.1));
+            top: 40%;
+            left: 65%;
+            animation: floatOrb 18s infinite alternate ease-in-out;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            100% { transform: translate(4%, 6%) scale(1.15); opacity: 0.8; }
+        }
+
+        .card {
+            position: relative;
+            z-index: 2;
+            max-width: 640px;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+            padding: 2.2rem 2rem 2.8rem;
+            text-align: center;
             border: 1px solid var(--border-light);
-            padding: 0.3rem 0.8rem;
-            border-radius: 2rem;
-            font-size: 0.75rem;
-            font-weight: 500;
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: 0.2s;
+            transition: all 0.3s ease;
         }
-        .ctrl-btn:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
+
+        .avatar {
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        .avatar-icon {
+            font-size: 4.5rem;
+            display: inline-block;
+            animation: bounceSoft 2.5s infinite ease-in-out;
+            filter: drop-shadow(0 4px 12px rgba(230, 126, 34, 0.2));
+        }
+        @keyframes bounceSoft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         .domain {
-            font-size: clamp(2.8rem, 12vw, 5rem);
+            font-size: clamp(2.4rem, 10vw, 4.6rem);
             font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-        }
-        .domain .pang {
-            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            letter-spacing: -0.01em;
+            background: linear-gradient(115deg, #E67E22, #F5B041, #E67E22);
+            background-size: 200% auto;
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+            margin: 0.5rem 0 0.5rem;
+            word-break: break-word;
+            animation: shimmerText 3.5s infinite linear;
+            line-height: 1.2;
         }
-        .domain .dot-ge {
-            background: linear-gradient(135deg, #a78bfa, #c084fc);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        .badge {
-            display: inline-block;
-            background: var(--badge-bg);
-            backdrop-filter: blur(4px);
-            border-radius: 40px;
-            padding: 0.3rem 1rem;
-            font-size: 0.75rem;
-            border: 1px solid var(--accent);
-            margin-bottom: 1rem;
-        }
-        .tagline {
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin: 1rem 0 0.5rem;
-            color: var(--text-secondary);
-        }
-        .description {
-            font-size: 1rem;
-            max-width: 520px;
-            margin: 0.8rem auto 1.5rem;
-            color: var(--text-muted);
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0 1.5rem;
-            flex-wrap: wrap;
-        }
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--social-bg);
-            padding: 0.5rem 1.2rem;
-            border-radius: 3rem;
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: 0.2s;
-            border: 1px solid transparent;
-        }
-        .social-link i {
-            font-size: 1.1rem;
-        }
-        .social-link:hover {
-            background: var(--social-hover);
-            color: white;
-            transform: translateY(-3px);
-            border-color: white;
-        }
-        /* 隐藏的链接（Guestbook 和 GitHub） */
-        .hidden-link {
-            display: none;
-        }
-        .contact-email {
-            margin-top: 1.2rem;
-            font-size: 0.9rem;
-            background: var(--social-bg);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.4rem 1.2rem;
-            border-radius: 3rem;
-            backdrop-filter: blur(4px);
-        }
-        .copy-btn {
-            background: transparent;
-            border: none;
-            color: var(--accent);
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-        .copy-btn:hover {
-            color: var(--accent-hover);
-        }
-        .footer {
-            margin-top: 2rem;
-            font-size: 0.7rem;
-            color: var(--text-muted);
+        @keyframes shimmerText {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
-        @media (max-width: 640px) {
-            .glass-card { padding: 1.5rem 1.2rem; }
-            .social-links { gap: 1rem; }
-            .social-link { padding: 0.4rem 1rem; font-size: 0.8rem; }
-            .tagline { font-size: 1rem; }
-            .description { font-size: 0.9rem; }
-            .controls { margin-bottom: 0.5rem; }
+        .greeting {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
         }
-        @media (max-width: 480px) {
-            .social-link span { display: none; }
-            .social-link i { margin: 0; font-size: 1.3rem; }
-            .social-link { padding: 0.6rem; border-radius: 50%; width: 44px; justify-content: center; }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
+            padding: 0.45rem 1.3rem;
+            border-radius: 60px;
+            margin: 1rem 0 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            border: 1px solid rgba(230, 126, 34, 0.25);
         }
-        .toast-msg {
-            position: fixed;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%) scale(0.9);
-            background: #1e2a3ecc;
-            backdrop-filter: blur(12px);
-            padding: 0.5rem 1.2rem;
-            border-radius: 40px;
-            color: #d1fae5;
-            font-size: 0.8rem;
-            opacity: 0;
-            transition: 0.2s;
-            pointer-events: none;
-            z-index: 1000;
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulseGreen 1.2s infinite;
         }
-        .toast-msg.show {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
+        @keyframes pulseGreen {
+            0% { opacity: 0.5; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .bio {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 1rem 0 1.8rem;
+            max-width: 430px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dot-group {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 1.5rem 0 1rem;
+        }
+        .dot-group span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounceUp 1s infinite ease-in-out both;
+        }
+        .dot-group span:nth-child(1) { animation-delay: -0.32s; background: #F5B041; }
+        .dot-group span:nth-child(2) { animation-delay: -0.16s; background: #E67E22; }
+        .dot-group span:nth-child(3) { background: #FF8C42; }
+        @keyframes bounceUp {
+            0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+            40% { transform: translateY(-8px); opacity: 1; }
+        }
+
+        /* 三个链接：左中右 */
+        .links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.5rem;
+        }
+        .link-item {
+            flex: 1;
+            text-align: center;
+            min-width: 80px;
+        }
+        .links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 0.3rem 0.6rem;
+            border-radius: 30px;
+            background: rgba(230, 126, 34, 0.05);
+            transition: all 0.2s;
+            width: 100%;
+            white-space: nowrap;
+        }
+        .links a:hover {
+            background: rgba(230, 126, 34, 0.15);
+            transform: translateY(-2px);
+            color: #D35400;
+        }
+        /* 微信部分：专用样式，使其明显像微信 */
+        .wechat-link {
+            color: #1AAD19;  /* 微信绿 */
+            background: rgba(26, 173, 25, 0.08);
+            font-weight: 600;
+        }
+        .wechat-link:hover {
+            background: rgba(26, 173, 25, 0.15);
+            color: #0F8B0E;
+            transform: translateY(-2px);
+        }
+        .wechat-id {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .footer-note {
+            margin-top: 1.8rem;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 560px) {
+            .card {
+                padding: 1.6rem;
+            }
+            .avatar-icon {
+                font-size: 3.2rem;
+            }
+            .greeting {
+                font-size: 1rem;
+            }
+            .bio {
+                font-size: 0.9rem;
+            }
+            .links {
+                gap: 0.5rem;
+            }
+            .links a, .wechat-id {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.4rem;
+                white-space: normal;
+                word-break: keep-all;
+            }
+            .link-item {
+                min-width: 70px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 
-<div class="animated-bg">
-    <div class="glow-1"></div>
-    <div class="glow-2"></div>
-    <!-- 已移除小方块网格线 .grid-lines -->
-</div>
-
-<div class="wrapper">
-    <div class="glass-card">
-        <div class="controls">
-            <button id="darkModeToggle" class="ctrl-btn"><i class="fas fa-moon"></i> <span id="themeText">Dark</span></button>
-            <button id="langToggle" class="ctrl-btn"><i class="fas fa-globe"></i> <span id="langBtnText">中文</span></button>
+    <main class="card">
+        <div class="avatar">
+            <div class="avatar-icon">🐼</div>
         </div>
-        <div class="badge" id="badgeText">✨ Creative Brand</div>
-        <div class="domain">
-            <span class="pang">pang</span><span class="dot-ge">.ge</span>
+        <div class="greeting">🤝 嘿，朋友</div>
+        <div class="domain">pang.ge</div>
+        <div class="badge">
+            <span class="pulse-dot"></span>
+            <span>✨ 随时在线 · 欢迎闲逛 ✨</span>
         </div>
-        <div class="tagline" id="taglineText"><i class="fas fa-feather-alt"></i> Pang's Creative Corner</div>
-        <div class="description" id="descText">
-            A digital playground for ideas, sharing, and connections. Let's grow together.
+        <div class="bio">
+            这里是「胖哥」的小站。<br>
+            一个喜欢分享生活、聊聊科技和偶尔写写代码的普通大叔。<br>
+            人间烟火，快乐摸鱼。
         </div>
-
-        <div class="social-links">
-            <!-- TikTok -->
-            <a href="https://tiktok.com/username" class="social-link" id="tiktokLink" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i> <span>TikTok</span></a>
-            <!-- X -->
-            <a href="https://x.com/username" class="social-link" id="xLink" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i> <span>X</span></a>
-            <!-- Facebook -->
-            <a href="https://facebook.com/username" class="social-link" id="facebookLink" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> <span>Facebook</span></a>
-            <!-- GitHub 隐藏 -->
-            <a href="https://github.com/username" class="social-link hidden-link" id="githubLink" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> <span>GitHub</span></a>
-            <!-- Guestbook 隐藏 -->
-            <a href="https://gb.ooo" class="social-link hidden-link" id="guestbookLink" target="_blank" rel="noopener noreferrer"><i class="fas fa-comment-dots"></i> <span>Guestbook</span></a>
+        <div class="dot-group">
+            <span></span><span></span><span></span>
         </div>
 
-        <div class="contact-email">
-            <i class="fas fa-envelope"></i> <span id="emailAddr">Hello#DomainName.Plus</span>
-            <button id="copyEmailBtn" class="copy-btn"><i class="fas fa-copy"></i> <span id="copyText">Copy</span></button>
+        <!-- 三个链接：GitHub，随缘更新，微信 -->
+        <div class="links">
+            <div class="link-item">
+                <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
+                    <span>🐙</span> GitHub
+                </a>
+            </div>
+            <div class="link-item">
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                    <span>🌱</span> 随缘更新
+                </a>
+            </div>
+            <div class="link-item">
+                <a href="#" class="wechat-link" style="cursor: default;" onclick="return false;">
+                    <span class="wechat-id">
+                        <span> 😂</span> 微信: Work Space pro
+                    </span>
+                </a>
+            </div>
         </div>
 
-        <div class="footer" id="footerText">© 2025 pang.ge · Slowly growing</div>
-    </div>
-</div>
-
-<div id="toastMsg" class="toast-msg">✅ Copied</div>
-
-<script>
-    // ---------- 中英文双语资源 ----------
-    const i18n = {
-        en: {
-            badge: "✨ Creative Brand",
-            tagline: "<i class='fas fa-feather-alt'></i> Pang's Creative Corner",
-            desc: "A digital playground for ideas, sharing, and connections. Let's grow together.",
-            copy: "Copy",
-            footer: "© 2025 pang.ge · Slowly growing",
-            themeDark: "Dark",
-            themeLight: "Light",
-            toastCopy: "📧 Email copied",
-            toastLink: "🔗 Link: replace 'username' with your handle"
-        },
-        zh: {
-            badge: "✨ 创意品牌",
-            tagline: "<i class='fas fa-feather-alt'></i> 胖哥的创意角落",
-            desc: "一个分享想法、连接彼此的数字化园地。慢慢生长，自在有趣。",
-            copy: "复制",
-            footer: "© 2025 pang.ge · 慢慢生长",
-            themeDark: "暗黑",
-            themeLight: "明亮",
-            toastCopy: "📧 邮箱已复制",
-            toastLink: "🔗 链接占位，请将 'username' 替换为实际账号"
-        }
-    };
-
-    let currentLang = localStorage.getItem('pang_lang') || 'en';
-    let currentTheme = localStorage.getItem('pang_theme') || 'light';
-
-    // DOM 元素
-    const badgeEl = document.getElementById('badgeText');
-    const taglineEl = document.getElementById('taglineText');
-    const descEl = document.getElementById('descText');
-    const copyBtnSpan = document.getElementById('copyText');
-    const footerEl = document.getElementById('footerText');
-    const themeToggleBtn = document.getElementById('darkModeToggle');
-    const themeTextSpan = document.getElementById('themeText');
-    const langToggleBtn = document.getElementById('langToggle');
-    const langBtnText = document.getElementById('langBtnText');
-    const emailSpan = document.getElementById('emailAddr');
-    const copyEmailBtn = document.getElementById('copyEmailBtn');
-    const toastMsg = document.getElementById('toastMsg');
-    let toastTimer;
-
-    function showToast(msg) {
-        if (!toastMsg) return;
-        toastMsg.textContent = msg;
-        toastMsg.classList.add('show');
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => toastMsg.classList.remove('show'), 2000);
-    }
-
-    function updateLanguage(lang) {
-        const t = i18n[lang];
-        if (!t) return;
-        badgeEl.innerHTML = t.badge;
-        taglineEl.innerHTML = t.tagline;
-        descEl.innerHTML = t.desc;
-        if (copyBtnSpan) copyBtnSpan.innerText = t.copy;
-        footerEl.innerText = t.footer;
-        langBtnText.innerText = (lang === 'en' ? '中文' : 'English');
-        localStorage.setItem('pang_lang', lang);
-        currentLang = lang;
-        const isDark = document.body.classList.contains('dark');
-        themeTextSpan.innerText = isDark ? t.themeDark : t.themeLight;
-    }
-
-    function setTheme(isDark) {
-        const body = document.body;
-        if (isDark) {
-            body.classList.add('dark');
-            localStorage.setItem('pang_theme', 'dark');
-        } else {
-            body.classList.remove('dark');
-            localStorage.setItem('pang_theme', 'light');
-        }
-        const t = i18n[currentLang];
-        themeTextSpan.innerText = isDark ? t.themeDark : t.themeLight;
-        currentTheme = isDark ? 'dark' : 'light';
-    }
-
-    function toggleTheme() {
-        const newIsDark = !document.body.classList.contains('dark');
-        setTheme(newIsDark);
-        showToast(newIsDark ? i18n[currentLang].themeDark + ' mode' : i18n[currentLang].themeLight + ' mode');
-    }
-
-    function toggleLanguage() {
-        const newLang = currentLang === 'en' ? 'zh' : 'en';
-        updateLanguage(newLang);
-        showToast(newLang === 'en' ? 'Switched to English' : '已切换至中文');
-    }
-
-    function copyEmail() {
-        const email = emailSpan.innerText.trim();
-        navigator.clipboard.writeText(email).then(() => {
-            showToast(i18n[currentLang].toastCopy);
-        }).catch(() => {
-            const textarea = document.createElement('textarea');
-            textarea.value = email;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            showToast(i18n[currentLang].toastCopy);
-        });
-    }
-
-    // 为社交链接添加占位符提示（如果链接仍是默认的 /username）
-    function attachSocialHint(linkElement, platform) {
-        if (linkElement && !linkElement.classList.contains('hidden-link')) {
-            linkElement.addEventListener('click', (e) => {
-                const href = linkElement.getAttribute('href');
-                if (href && href.includes('/username')) {
-                    e.preventDefault();
-                    showToast(`${platform}: ${i18n[currentLang].toastLink}`);
-                }
-            });
-        }
-    }
-
-    const tiktokLink = document.getElementById('tiktokLink');
-    const xLink = document.getElementById('xLink');
-    const facebookLink = document.getElementById('facebookLink');
-    attachSocialHint(tiktokLink, 'TikTok');
-    attachSocialHint(xLink, 'X');
-    attachSocialHint(facebookLink, 'Facebook');
-
-    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
-    if (langToggleBtn) langToggleBtn.addEventListener('click', toggleLanguage);
-    if (copyEmailBtn) copyEmailBtn.addEventListener('click', copyEmail);
-
-    // 初始化主题
-    const storedTheme = localStorage.getItem('pang_theme');
-    if (storedTheme === 'dark') setTheme(true);
-    else if (storedTheme === 'light') setTheme(false);
-    else setTheme(false);
-
-    // 初始化语言
-    updateLanguage(currentLang);
-
-    // 鼠标跟随光晕特效
-    document.addEventListener('mousemove', (e) => {
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-        const glows = document.querySelectorAll('.glow-1, .glow-2');
-        glows.forEach((glow, idx) => {
-            const moveX = (x - 0.5) * (idx === 0 ? 25 : -20);
-            const moveY = (y - 0.5) * (idx === 0 ? 20 : -18);
-            glow.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.02)`;
-        });
-    });
-</script>
+        <div class="footer-note">
+            © 2025 胖哥 · 保持好奇，保持可爱
+        </div>
+    </main>
 </body>
 </html>
