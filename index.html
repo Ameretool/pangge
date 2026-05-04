@@ -234,17 +234,11 @@
         .wechat-link {
             color: #1AAD19;
             background: rgba(26, 173, 25, 0.08);
+            cursor: pointer;
         }
         .wechat-link:hover {
             background: rgba(26, 173, 25, 0.15);
             color: #0F8B0E;
-        }
-        .wechat-id {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            width: 100%;
         }
 
         .footer-note {
@@ -271,7 +265,7 @@
             .links {
                 gap: 0.5rem;
             }
-            .links a, .wechat-id {
+            .links a {
                 font-size: 0.75rem;
                 padding: 0.2rem 0.4rem;
                 white-space: normal;
@@ -307,7 +301,7 @@
             <span></span><span></span><span></span>
         </div>
 
-        <!-- 三个链接区域：左侧 GitHub，中间 随缘更新，右侧 微信 -->
+        <!-- 三个链接：GitHub，随缘更新，微信（优化移动端显示） -->
         <div class="links">
             <div class="link-item">
                 <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
@@ -323,11 +317,9 @@
                 <!-- 微信图标部分：您可以自由替换下方 <span> 中的内容 -->
                 <!-- 例如：使用微信 logo emoji -> 💬 或 💚 或 😂 👈 👉🟢，或者使用 Font Awesome 图标（需要额外引入库） -->
                 <!-- 这里使用了一个基础的绿色微信图标占位符，您可以直接修改成您喜欢的任何字符/emoji -->
-                <a href="#" class="wechat-link" style="cursor: default;" onclick="return false;">
-                    <span class="wechat-id">
-                        <span class="wechat-icon">👉</span> <!-- 👈 在这里修改成您喜欢的微信图标（可以是任何 emoji 或文字） -->
-                        微信: Work Space pro
-                    </span>
+                <!-- 微信区域：点击显示微信号，桌面端悬停显示完整 ID -->
+                <a href="javascript:void(0)" class="wechat-link" id="wechatButton" title="微信号: Work Space pro">
+                    <span>👉</span> 微信
                 </a>
             </div>
         </div>
@@ -336,5 +328,21 @@
             © 2025 胖哥 · 保持好奇，保持可爱
         </div>
     </main>
+
+    <script>
+        // 移动端点击微信按钮弹出提示框显示完整微信号
+        const wechatBtn = document.getElementById('wechatButton');
+        if (wechatBtn) {
+            wechatBtn.addEventListener('click', function(e) {
+                // 移动端弹出友好提示
+                if (window.innerWidth <= 560) {  // 与响应式断点一致
+                    alert('微信号：Work Space pro');
+                }
+                // 桌面端已经通过 title 属性显示，无需额外处理
+            });
+        }
+    </script>
 </body>
 </html>
+
+
